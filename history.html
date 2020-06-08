@@ -8,8 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>History</title>
-
+  <title>Zeenaz</title>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -28,13 +27,54 @@
       margin-right: auto;
       width: 80%;
     }
-    .cta {
-      background-color: rgba(47, 23, 15, 0.9);
+
+    /* Timeline holder */
+    ul.timeline {
+      list-style-type: none;
+      position: relative;
+      padding-left: 1.5rem;
     }
 
-    .cta-inner:before {
-      background-color: rgba(47, 23, 15, 0.4);
-      border: .25rem solid rgba(47, 23, 15, 10) !important;
+    /* Timeline vertical line */
+    ul.timeline:before {
+      content: ' ';
+      background: rgba(74, 38, 18, 0.9);
+      display: inline-block;
+      position: absolute;
+      left: 16px;
+      width: 4px;
+      height: 100%;
+      z-index: 400;
+      border-radius: 1rem;
+    }
+
+    li.timeline-item {
+      margin: 20px 0;
+    }
+
+    /* Timeline item arrow */
+    .timeline-arrow {
+      border-top: 0.5rem solid transparent;
+      border-right: 0.5rem solid #fff;
+      border-bottom: 0.5rem solid transparent;
+      display: block;
+      position: absolute;
+      left: 2rem;
+    }
+
+    /* Timeline item circle marker */
+    li.timeline-item::before {
+      content: ' ';
+      background: rgba(74, 38, 18, 0.9);
+      display: inline-block;
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      left: 11px;
+      width: 14px;
+      height: 14px;
+      z-index: 400;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
   </style>
 
@@ -42,9 +82,9 @@
 
 <body>
 
-  <h1 class="site-heading text-center text-white d-none d-lg-block">
+  <h1 class="site-heading text-center d-none d-lg-block">
     <span class="site-heading-lower">Zeenaz: A Culinary Legacy</span>
-    <span class="site-heading-upper text-primary mb-3">East African Style Indian Cuisine</span>
+    <span class="site-heading-upper text-primary ">East African Style Indian Cuisine</span>
   </h1>
 
   <!-- Navigation -->
@@ -58,11 +98,6 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item px-lg-4">
             <a class="nav-link text-uppercase text-expanded" href="about.html">Our Cookbook</a>
           </li>
           <li class="nav-item active px-lg-4">
@@ -75,7 +110,7 @@
             <a class="nav-link text-uppercase text-expanded" href="gallery.html">Gallery</a>
           </li>
           <li class="nav-item px-lg-4">
-            <a class="nav-link text-uppercase text-expanded" href="store.html">Contact</a>
+            <a class="nav-link text-uppercase text-expanded" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
@@ -90,27 +125,40 @@
           <div class="cta-inner text-center rounded">
             <h2 class="section-heading mb-4">
               <span class="section-heading-upper">About Dolly and Sadru Pisani</span>
-              <span class="section-heading-lower">A family of traditions</span>
             </h2>
-            <p class="mb-3">
-                Dolly first learned the basics of cooking from her father in Tanzania at a very young age and continued to pick up 
-                new skills simply by watching others. She was blessed with a natural sense of creativity and trained as a seamstress 
-                and designer. While going on to teach those crafts in Dar-es-Salaam, her passion for experimenting with different 
-                flavours in the kitchen was never far behind. 
-                <br><br>
-                In 1962, she married Sadru Pisani and thirteen years later they immigrated to Vancouver, British Columbia, Canada. 
-                They opened Zeenaz in 1985, fulfilling their dream of bringing Vancouver its first taste of East African-style Indian cuisine. 
-                It was truly a family affair: Sadru's entrepreneurial spirit, Dolly's incredible cooking talent and even the restaurant's 
-                name which fuses those of their children and grandchildren. Dolly's inventiveness with traditional dishes and unique flavours 
-                along with Sadru's famous hospitality resulted in a loyal following, not to mention rave reviews from local food critics, 
-                Tourism Vancouver, and the Lonely Planet. 
-                <br><br>
-                In 2003, Dolly and Sadru opened Zeenaz Kitchen to meet the growing demand for their snack foods, pickles, and catering 
-                services. The secret recipe for their signature snack product Chevdo, a blend of puffed rice, nuts and savour and sweet spices, 
-                has been refined to perfection over the years. It really must be tasted! Zeenaz products are now distributed across North America 
-                and Dolly and Sadru maintain their tradition of serving fresh, home-cooked products that are made with love and pride. 
-            </p>
-            <img class="center" src="img/history.jpg"></img>
+            <br />
+            <!-- Timeline -->
+            <ul class="timeline">
+              <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                <div class="timeline-arrow"></div>
+                <h2 class="h5 mb-0">21 March, 2019</h2>
+                <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis
+                  mollis. Duis sagittis ligula in sodales vehicula....</p>
+              </li>
+              <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                <div class="timeline-arrow"></div>
+                <h2 class="h5 mb-0">21 March, 2019</h2>
+                <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis
+                  mollis. Duis sagittis ligula in sodales vehicula....</p>
+              </li>
+              <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                <div class="timeline-arrow"></div>
+                <h2 class="h5 mb-0">21 March, 2019</h2>
+                <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis
+                  mollis. Duis sagittis ligula in sodales vehicula....</p>
+              </li>
+              <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                <div class="timeline-arrow"></div>
+                <h2 class="h5 mb-0">21 March, 2019</h2>
+                <p class="text-small mt-2 font-weight-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Quisque scelerisque diam non nisi semper, et elementum lorem ornare. Maecenas placerat facilisis
+                  mollis. Duis sagittis ligula in sodales vehicula....</p>
+                <img class="center" src="img/history.jpg"></img>
+              </li>
+            </ul><!-- End -->
 
 
           </div>
