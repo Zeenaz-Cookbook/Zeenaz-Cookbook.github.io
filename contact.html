@@ -5,7 +5,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="description" content="Contact | Zeenaz Kitcken">
   <meta name="author" content="">
 
   <title>Zeenaz</title>
@@ -18,6 +18,7 @@
     href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Custom styles for this template -->
   <link href="css/business-casual.min.css" rel="stylesheet">
@@ -37,6 +38,33 @@
     .form-btn {
       background-color: rgba(74, 38, 18, 0.75);
       font-weight: 600;
+    }
+
+    .fa {
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      width: 50px;
+      text-align: center;
+      text-decoration: none;
+      z-index: 1;
+      position: relative;
+    }
+
+    .fa:hover {
+      opacity: 0.7;
+    }
+
+    .fa-facebook {
+      color: #3B5998;
+    }
+
+    .fa-youtube {
+      color: #bb0000;
+    }
+
+    .fa-envelope {
+      color: black;
     }
   </style>
 
@@ -88,18 +116,23 @@
             <h2 class="section-heading mb-4">
               <span class="section-heading-upper">Contact Us</span>
             </h2>
-            <form action="https://formspree.io/xgenznpy" method="POST" class="form">
+            <a href="https://www.facebook.com/zeenazaculinarylegacy/" target="_blank" class="fa fa-facebook"></a>
+            <a target="_blank" href="https://www.youtube.com/playlist?list=PLSYEmCzNXSoGD_bss08BemMQacfFBzSLG"
+              class="fa fa-youtube"></a>
+            <a href="mailto:zeenazkitchen@gmail.com" class="fa fa-envelope"></a>
+            <form id="my-form" class="form" action="https://formspree.io/xgenznpy" method="POST">
               <div class="form-group">
                 <input type="text" class="form-control" name="name" placeholder="Enter name">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter email" name="_replyto">
+                <input type="email" class="form-control" placeholder="Enter email" name="_replyto"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="someone@example.com">
               </div>
               <div class="form-group">
                 <textarea class="form-control" rows="3" placeholder="Leave us a message" name="message"></textarea>
               </div>
-              <!-- your other form fields go here -->
-              <button type="submit" class="btn form-btn btn-md">Submit</button>
+              <p id="my-form-status"></p>
+              <button id="my-form-button" class="btn form-btn btn-md">Submit</button>
             </form>
           </div>
         </div>
@@ -117,30 +150,56 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <script>
+    window.addEventListener("DOMContentLoaded", function () {
 
-    // const thankyou = document.getElementById('thankyou');
-    // const form = document.getElementById('contact_form');
-    // $("#contact_form").on("submit", function (e) {
-    //   var name = $('#name').val();
-    //   var email = $('#email').val();
-    //   var message = $('#message').val();
-    //   $.ajax({
-    //     url: "https://formspree.io/xgenznpy",
-    //     method: "POST",
-    //     data: {
-    //       name: name,
-    //       _replyto: email,
-    //       message: message
-    //     },
-    //   });     
-    //   thankyou.style.display = 'block';
-    //   form.reset();
-    //   return false;
-    // });
+      // get the form elements defined in your form HTML above
+
+      var form = document.getElementById("my-form");
+      var button = document.getElementById("my-form-button");
+      var status = document.getElementById("my-form-status");
+
+      // Success and Error functions for after the form is submitted
+
+      function success() {
+        form.reset();
+        status.style.display = "block";
+        button.style.display = 'none';
+        status.innerHTML = "Thank you! We will be in contact soon";
+      }
+
+      function error() {
+        status.style.display = "block";
+        status.innerHTML = "Sorry there was an error submitting your message. Try emailing us directly or contacting us on Facebook!";
+      }
+
+      // handle the form submission event
+
+      form.addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        status.style.display = "none";
+        var data = new FormData(form);
+        ajax(form.method, form.action, data, success, error);
+      });
+    });
+
+    // helper function for sending an AJAX request
+
+    function ajax(method, url, data, success, error) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+          success(xhr.response, xhr.responseType);
+        } else {
+          error(xhr.status, xhr.response, xhr.responseType);
+        }
+      };
+      xhr.send(data);
+    }
   </script>
-
 </body>
 
 </html>
